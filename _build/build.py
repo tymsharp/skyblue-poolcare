@@ -14,7 +14,7 @@ import json
 import shutil
 from pathlib import Path
 
-from content import BIZ, CITIES, FAQ, PROMISES, SERVICES, TESTIMONIALS
+from content import BIZ, CITIES, FAQ, POSTS, PROMISES, SERVICES, TESTIMONIALS
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
@@ -76,6 +76,7 @@ def nav(active=""):
     items = [("weekly-pool-service.html", "Weekly Service", "weekly"),
              ("index.html#services", "Services", "services"),
              ("service-areas.html", "Service Areas", "areas"),
+             ("blog.html", "Blog", "blog"),
              ("contact.html", "Contact", "contact")]
     cur = ' aria-current="page"'
     links = "".join(f'<a href="{h}"{cur if k == active else ""}>{t}</a>' for h, t, k in items)
@@ -125,7 +126,7 @@ def footer():
   </div>
   <div class="wrap foot-base">
     <span>&copy; 2026 {BIZ['legal']}</span>
-    <span><a href="service-areas.html">All service areas</a> &middot; <a href="privacy.html">Privacy</a></span>
+    <span><a href="service-areas.html">All service areas</a> &middot; <a href="blog.html">Blog</a> &middot; <a href="privacy.html">Privacy</a></span>
   </div>
 </footer>
 <div class="mobile-bar">
@@ -381,7 +382,7 @@ def home():
   <div class="wave-band" aria-hidden="true"></div>
 </section>"""
     body = (trust_strip() + services_section() + visit_section() + price_section() + areas_section()
-            + reviews_section() + steps_section() + faq_section(FAQ)
+            + reviews_section() + steps_section() + blog_teaser() + faq_section(FAQ)
             + quote_section("Prefer to tell us more? Get a quote"))
     schema = graph({**business_schema()}, faq_schema(FAQ))
     return (head("Weekly Pool Service, San Fernando Valley & Westside | SkyBlue",
@@ -555,6 +556,93 @@ def privacy_page():
     return head("Privacy Policy | SkyBlue Pool Care", "SkyBlue Pool Care privacy policy.", "privacy") + nav() + main + footer()
 
 
+# ---------------------------------------------------------------- blog
+
+def post_file(p):
+    return f"blog-{p['slug']}.html"
+
+
+def post_card(p):
+    return f"""<article class="post-card">
+      <p class="post-meta"><span class="tag">{p['tag']}</span> <time datetime="{p['date']}">{p['date_h']}</time></p>
+      <h3><a href="{post_file(p)}">{p['title']}</a></h3>
+      <p>{p['desc']}</p>
+      <span class="post-read">{p['read']}</span>
+    </article>"""
+
+
+def blog_teaser():
+    cards = "".join(post_card(p) for p in POSTS[:3])
+    return f"""<section class="sec sec-blog">
+  <div class="wrap">
+    <div class="sec-head row-head"><div><p class="eyebrow">Pool care tips</p><h2>From the blog</h2></div>
+    <a class="link-more" href="blog.html">All articles &rarr;</a></div>
+    <div class="post-grid">{cards}</div>
+  </div>
+</section>"""
+
+
+def render_body(blocks):
+    out = []
+    for kind, val in blocks:
+        if kind == "ul":
+            out.append("<ul>" + "".join(f"<li>{i}</li>" for i in val) + "</ul>")
+        else:
+            out.append(f"<{kind}>{val}</{kind}>")
+    return "\n".join(out)
+
+
+def blog_index():
+    feat, rest = POSTS[0], POSTS[1:]
+    crumbs = [("Home", ""), ("Blog", "blog")]
+    main = page_hero("Blog", "Pool care tips for Los Angeles owners",
+                     "Straight answers on pricing, water chemistry and keeping your pool clear through a Valley summer.",
+                     [("Home", "index.html"), ("Blog", None)]) + f"""
+<section class="sec"><div class="wrap">
+  <article class="post-feature">
+    <p class="post-meta"><span class="tag">{feat['tag']}</span> <time datetime="{feat['date']}">{feat['date_h']}</time> &middot; {feat['read']}</p>
+    <h2><a href="{post_file(feat)}">{feat['title']}</a></h2>
+    <p class="lede">{feat['desc']}</p>
+    <a class="btn btn-ghost" href="{post_file(feat)}">Read the article</a>
+  </article>
+  <div class="post-grid">{''.join(post_card(p) for p in rest)}</div>
+</div></section>"""
+    schema = graph({"@type": "Blog", "name": f"{BIZ['name']} Blog", "url": page_url("blog"),
+                    "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "datePublished": p["date"],
+                                  "url": page_url(post_file(p)[:-5])} for p in POSTS]},
+                   crumbs_schema(crumbs))
+    return (head("Pool Care Blog for Los Angeles Owners | SkyBlue Pool Care",
+                 "Pool care tips for San Fernando Valley and Westside homeowners: pricing, hard water, heat waves, winter care.",
+                 "blog", schema) + nav("blog") + main + footer())
+
+
+def post_page(p):
+    slug = post_file(p)[:-5]
+    others = "".join(post_card(x) for x in POSTS if x["slug"] != p["slug"])
+    crumbs = [("Home", ""), ("Blog", "blog"), (p["title"], slug)]
+    schema = graph({"@type": "BlogPosting", "headline": p["title"], "description": p["desc"],
+                    "datePublished": p["date"], "dateModified": p["date"], "mainEntityOfPage": page_url(slug),
+                    "author": {"@type": "Organization", "name": BIZ["name"]},
+                    "publisher": {"@id": BIZ["domain"] + "/#business", "name": BIZ["name"]}},
+                   crumbs_schema(crumbs))
+    main = f"""<article class="article">
+  <header class="page-hero">
+    <div class="wrap narrow">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="blog.html">Blog</a></nav>
+      <p class="post-meta"><span class="tag">{p['tag']}</span> <time datetime="{p['date']}">{p['date_h']}</time> &middot; {p['read']}</p>
+      <h1>{p['title']}</h1>
+      <p class="lede">{p['desc']}</p>
+    </div>
+  </header>
+  <div class="wrap narrow prose">{render_body(p['body'])}
+    <aside class="inline-cta"><p><strong>Want this handled for you?</strong> Weekly service with a photo report after every visit.</p><a class="btn btn-primary" href="contact.html">Get a Free Quote</a></aside>
+  </div>
+</article>
+<section class="sec sec-blog"><div class="wrap"><div class="sec-head"><h2>More pool tips</h2></div><div class="post-grid">{others}</div></div></section>"""
+    title = f"{p['title']} | SkyBlue"
+    return head(title, p["desc"], slug, schema) + nav("blog") + main + footer()
+
+
 # ---------------------------------------------------------------- build
 
 def sitemap(slugs):
@@ -590,13 +678,17 @@ def build():
              "privacy.html": privacy_page()}
     for c in CITIES:
         pages[city_file(c)] = city_page(c)
+    pages["blog.html"] = blog_index()
+    for p in POSTS:
+        pages[post_file(p)] = post_page(p)
     for name, src in pages.items():
         (OUT / name).write_text(src)
-    indexable = ["", "weekly-pool-service", "service-areas", "contact"] + [city_file(c)[:-5] for c in CITIES]
+    indexable = (["", "weekly-pool-service", "service-areas", "contact", "blog"] + [city_file(c)[:-5] for c in CITIES]
+                 + [post_file(p)[:-5] for p in POSTS])
     (OUT / "sitemap.xml").write_text(sitemap(indexable))
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BIZ['domain']}/sitemap.xml\n")
     (OUT / "_headers").write_text(HEADERS)
-    print(f"public/: {len(pages)} pages, {len(CITIES)} city pages, {sum(len(c['zips']) for c in CITIES)} zips")
+    print(f"public/: {len(pages)} pages, {len(CITIES)} city pages, {len(POSTS)} posts, {sum(len(c['zips']) for c in CITIES)} zips")
 
 
 if __name__ == "__main__":

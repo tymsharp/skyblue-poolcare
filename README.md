@@ -2,8 +2,9 @@
 
 Static site for SkyBlue Pool Care. Same pattern as bjgdigital.com: plain HTML, one CSS file, deployed on Cloudflare Pages. Lead forms post into GoHighLevel.
 
-## Pages (20)
+## Pages (25)
 - Home, Weekly Pool Service, Service Areas, Contact, Privacy, Thank You (noindex), 404.
+- Blog index plus 4 posts, `blog-<slug>.html` (pricing, hard water, heat-wave green pools, winter service). Posts live in `POSTS` in `_build/content.py`; add one there and rebuild.
 - 13 city pages, `pool-service-<city>.html`. All 74 service-area zips are listed on the city page that covers them. No per-zip pages, on purpose (doorway-page risk).
   - Valley: Calabasas & West Hills, Woodland Hills, Encino & Tarzana, Sherman Oaks & Van Nuys, Studio City & Toluca Lake, Northridge & Porter Ranch, Burbank.
   - Westside: Hollywood Hills & Los Feliz, West Hollywood, Beverly Hills & Bel Air, Brentwood & Pacific Palisades, Santa Monica & Venice, Culver City & Mar Vista.

@@ -89,3 +89,11 @@ h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
 .area-card{display:block;padding:18px;text-decoration:none}
 .legal{max-width:70ch}
 .legal h2{font-size:1.3rem;margin-top:28px}
+
+/* blog (theme-neutral: tokens only) */
+.post-card{background:var(--bg);border:1.5px solid var(--line);border-radius:18px}
+.post-feature{background:var(--wash);border-radius:22px}
+.sec-blog{background:var(--wash)}
+.sec-blog .post-card{background:var(--bg)}
+.article .prose ul{padding-left:1.2em}
+.article .prose li{margin:.4em 0}

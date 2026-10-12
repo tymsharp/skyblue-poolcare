@@ -300,3 +300,85 @@ CITIES = [
 ]
 
 ZIP_HOODS = {}  # filled by build.py from data/service-area-zips.csv
+
+
+# Blog posts. body = list of (tag, html) blocks; tag is p, h2, h3 or ul (list of items).
+# Keep claims general and true; anything Skyblue-specific that needs Zach goes in FILL().
+POSTS = [
+    {
+        "slug": "weekly-pool-service-cost-los-angeles",
+        "title": "How Much Does Weekly Pool Service Cost in Los Angeles?",
+        "desc": "What drives the monthly price of weekly pool service in the San Fernando Valley and Westside, and what should be included.",
+        "date": "2026-10-12", "date_h": "October 12, 2026", "read": "4 min read", "tag": "Pricing",
+        "body": [
+            ("p", "Most Los Angeles pool companies charge a flat monthly price for weekly service. The number you're quoted depends on a handful of things you can check before you call."),
+            ("h2", "What changes the price"),
+            ("ul", ["<strong>Pool size.</strong> More water takes more chemical and more time to brush and vacuum.",
+                    "<strong>A spa.</strong> An attached spa is a second body of water to clean and balance.",
+                    "<strong>Trees and debris.</strong> Oaks in Encino or canyon brush in Laurel Canyon fill baskets fast and add time to every stop.",
+                    "<strong>Access.</strong> A hillside pool down a flight of stairs takes longer than a flat backyard.",
+                    "<strong>Chemicals included or extra.</strong> Some companies include chemicals, some bill them separately. Ask."]),
+            ("h2", "What weekly service should include"),
+            ("p", "At minimum: brushing walls, steps and the tile line, skimming, vacuuming, emptying the skimmer and pump baskets, testing and balancing the water, and a look at the pump, filter and heater. Filter cleans are usually extra and done a few times a year."),
+            ("p", "Ask for proof of each visit. SkyBlue sends a photo and a full pool report after every cleaning, so you never have to wonder whether the tech came."),
+            ("h2", "What SkyBlue charges"),
+            ("p", f"Weekly service starts at {BIZ['price_from']} a month, month to month with no contract. Send the quote form with your address and we'll give you a firm number."),
+        ],
+    },
+    {
+        "slug": "hard-water-calcium-scale-la-pools",
+        "title": "Hard Water and Calcium Scale in LA Pools",
+        "desc": "Why a white crust shows up on the tile line, what calcium hardness level to hold, and when a drain and refill makes sense.",
+        "date": "2026-10-12", "date_h": "October 12, 2026", "read": "4 min read", "tag": "Water care",
+        "body": [
+            ("p", "Southern California tap water is hard, meaning it carries a lot of dissolved calcium. Every time your pool tops itself off after a hot week, it adds more. Water evaporates; the calcium stays."),
+            ("h2", "What scale looks like"),
+            ("p", "A white or gray crust along the tile line, rough spots on plaster, and white flakes in the water. Scale also builds inside heaters and on salt cells, where you can't see it but it shortens their life."),
+            ("h2", "The level to hold"),
+            ("p", "Most pool pros aim for calcium hardness between about 200 and 400 parts per million. Scale forms faster when calcium is high and pH and alkalinity drift up at the same time, so the three have to be managed together. That's why we test every week instead of guessing."),
+            ("h2", "Burbank vs Los Angeles water"),
+            ("p", "Burbank homes get water from Burbank Water and Power, not LADWP. The supply is different, so the pool's balance drifts differently. See our <a href=\"pool-service-burbank.html\">Burbank pool service page</a>."),
+            ("h2", "When to drain and refill"),
+            ("p", "When calcium climbs so high that the water won't stay balanced, a partial or full drain and refill resets it. Acid washing removes stains and scale from older plaster at the same time. Drains are best done in cooler months, not in a September heat wave."),
+        ],
+    },
+    {
+        "slug": "green-pool-heat-wave-san-fernando-valley",
+        "title": "Why Pools Turn Green in a San Fernando Valley Heat Wave",
+        "desc": "Valley heat burns off chlorine fast. Here's why pools flip green in a few days and how weekly service prevents it.",
+        "date": "2026-10-12", "date_h": "October 12, 2026", "read": "4 min read", "tag": "Seasonal",
+        "body": [
+            ("p", "The San Fernando Valley gets some of the hottest days in Los Angeles County. Woodland Hills set the county record at 121°F on September 6, 2020. Pools feel it."),
+            ("h2", "What heat does to your water"),
+            ("ul", ["Sunlight breaks chlorine down. Without stabilizer, most of it can be gone in an afternoon.",
+                    "Warm water grows algae faster.",
+                    "More swimmers add more sunscreen, sweat and debris that use up chlorine.",
+                    "Evaporation means more top-off water, which shifts the balance."]),
+            ("h2", "How to keep it clear"),
+            ("ul", ["Hold stabilizer (cyanuric acid) in range so chlorine survives the sun.",
+                    "Test and adjust every week, not every few weeks.",
+                    "Keep the filter clean so it can catch what the chlorine kills.",
+                    "Run the pump long enough on hot weeks to turn the water over."]),
+            ("h2", "If it's already green"),
+            ("p", "Our green-to-blue cleanup brings it back with algae treatment, brushing and a filter clean. Then weekly service keeps it there. Serving <a href=\"pool-service-woodland-hills.html\">Woodland Hills</a>, <a href=\"pool-service-encino.html\">Encino</a>, <a href=\"pool-service-northridge.html\">Northridge</a> and the rest of the Valley."),
+        ],
+    },
+    {
+        "slug": "winter-pool-service-los-angeles",
+        "title": "Do You Need Weekly Pool Service in an LA Winter?",
+        "desc": "Algae slows down when the water cools, but leaves, wind and rain don't. What changes in winter and what doesn't.",
+        "date": "2026-10-12", "date_h": "October 12, 2026", "read": "3 min read", "tag": "Seasonal",
+        "body": [
+            ("p", "Los Angeles pools stay open all year. Water cools down in winter and algae grows more slowly, so some owners wonder if weekly service can wait until spring."),
+            ("h2", "What still happens in winter"),
+            ("ul", ["<strong>Santa Ana winds</strong> fill pools with leaves and dust, mostly from fall through winter.",
+                    "<strong>Rain</strong> dilutes the water and washes in dirt, which throws off the balance.",
+                    "<strong>Leaf drop</strong> from sycamores and other deciduous trees clogs baskets and stains plaster.",
+                    "<strong>Equipment</strong> still runs and still breaks. Freeze-protection settings and heaters need checking."]),
+            ("h2", "What changes"),
+            ("p", "Pumps can usually run fewer hours, and chemical use drops. The weekly visit becomes more about debris and equipment, less about chlorine."),
+            ("h2", "The cost of skipping"),
+            ("p", "A pool left alone for a month or two can turn green, stain, or hide an equipment problem until spring. Getting it back costs more than the weeks you skipped. Weekly service is month to month with no contract."),
+        ],
+    },
+]
