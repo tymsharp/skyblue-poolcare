@@ -1,10 +1,13 @@
 """Build skyblue-poolcare.com.
 
-    python3 _build/build.py
+    python3 _build/build.py               # live theme -> public/
+    python3 _build/build.py california    # one theme -> public/
+    python3 _build/build.py --demos       # every theme -> demos/<theme>/
 
 Writes the static site to public/. Content lives in _build/content.py.
-Styles: _build/base.css + _build/skyblue.css, joined into one
-public/assets/site.css. Forms post to GoHighLevel (see GHL-SETUP.md).
+Styles: _build/base.css + _build/skyblue.css + the theme's override file
+in _build/themes/, joined into one public/assets/site.css. Only the look
+changes between themes; pages and copy are identical. Forms post to GoHighLevel (see GHL-SETUP.md).
 Links are relative and pages are flat .html files, so Cloudflare Pages
 serves them as clean URLs (/pool-service-encino).
 """
@@ -12,6 +15,7 @@ import csv
 import html
 import json
 import shutil
+import sys
 from pathlib import Path
 
 from content import BIZ, CITIES, FAQ, POSTS, PROMISES, SERVICES, TESTIMONIALS
@@ -19,15 +23,47 @@ from content import BIZ, CITIES, FAQ, POSTS, PROMISES, SERVICES, TESTIMONIALS
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 OUT = ROOT / "public"
+DEMOS = ROOT / "demos"
 e = html.escape
 
-FONTS = "family=Outfit:wght@600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800"
+# Demo themes for Skyblue to pick from. Same pages and copy, different look.
+# Colors in every theme come from the current logo: sky blue + #7CE6F3 aqua.
+THEMES = {
+    "skyblue": {
+        "name": "Original", "blurb": "The first build. Bright, friendly, sky-blue gradients.",
+        "fonts": "family=Outfit:wght@600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800",
+        "color": "#2490C8", "css": None,
+    },
+    "california": {
+        "name": "California", "blurb": "Sunset sky, palms and sand, with bold modern type.",
+        "fonts": "family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700",
+        "color": "#FF8A5B", "css": "california.css",
+    },
+    "minimal": {
+        "name": "Minimal", "blurb": "White space, thin lines, one blue. Nothing extra.",
+        "fonts": "family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600",
+        "color": "#FFFFFF", "css": "minimal.css",
+    },
+    "nightswim": {
+        "name": "Night Swim", "blurb": "Dark navy and glowing aqua. Upscale, for Beverly Hills and the Hills.",
+        "fonts": "family=Playfair+Display:wght@600;700&family=Manrope:wght@400;600;800",
+        "color": "#0B1A3F", "css": "nightswim.css",
+    },
+}
+LIVE_THEME = "skyblue"
+DEMO_THEMES = ["california", "minimal", "nightswim"]
+THEME, THEME_KEY = THEMES[LIVE_THEME], LIVE_THEME
+
+# Logo from the current Webflow site. Drop the file in _build/logo.png to
+# serve it locally instead (do this before launch). If the image fails to
+# load, brand.js swaps in the drawn mark + wordmark.
+LOGO_SRC = "https://cdn.prod.website-files.com/6779dcd512e7db5c270fcafa/678bb8a3a9998141beaf7191_SkyBlue%20Logo.png"
 REGIONS = {"valley": "San Fernando Valley", "westside": "Westside & Hollywood"}
 
 # zip -> neighborhoods, from the shared service-area list
 ZIPS = {r["zip"]: r for r in csv.DictReader(open(ROOT / "data" / "service-area-zips.csv"))}
 
-LOGO = """<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0E7FB8"/>
+LOGO = """<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#2490C8"/>
 <path d="M5 22q4-4 7.5 0t7.5 0 7.5 0 7.5 0" fill="none" stroke="#7CE6F3" stroke-width="3" stroke-linecap="round"/>
 <path d="M7 28q3.3-3 6.5 0t6.5 0 6.5 0 6.5 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
 <circle cx="27" cy="12" r="4" fill="#FFD25C"/></svg>"""
@@ -42,7 +78,9 @@ def city_file(c):
 
 
 def brand():
-    return f'<a class="brand" href="index.html">{LOGO}<span>Sky<b>Blue</b> Pool Care</span></a>'
+    src = "assets/logo.png" if (HERE / "logo.png").exists() else LOGO_SRC
+    return (f'<a class="brand" href="index.html"><img class="brand-logo" src="{src}" alt="SkyBlue Pool Care" width="180" height="52">'
+            f'<span class="brand-fallback">{LOGO}<span>Sky<b>Blue</b> Pool Care</span></span></a>')
 
 
 def head(title, desc, slug, schema=None, noindex=False):
@@ -60,15 +98,15 @@ def head(title, desc, slug, schema=None, noindex=False):
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{page_url(slug)}">
-<meta name="theme-color" content="#0E7FB8">
+<meta name="theme-color" content="{THEME['color']}">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?{FONTS}&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?{THEME['fonts']}&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 {ld}
 </head>
-<body>
+<body class="theme-{THEME_KEY}">
 """
 
 
@@ -133,6 +171,7 @@ def footer():
   <a href="tel:{BIZ['phone_e164']}">Call</a>
   <a class="mb-quote" href="contact.html">Free Quote</a>
 </div>
+<script src="assets/brand.js" defer></script>
 <script src="assets/ghl-form.js" defer></script>
 </body>
 </html>
@@ -379,6 +418,7 @@ def home():
       {intake_form('h')}
     </div>
   </div>
+  <div class="hero-art" aria-hidden="true"><span class="sun"></span><span class="palm p1"></span><span class="palm p2"></span></div>
   <div class="wave-band" aria-hidden="true"></div>
 </section>"""
     body = (trust_strip() + services_section() + visit_section() + price_section() + areas_section()
@@ -666,13 +706,21 @@ HEADERS = """/*
 """
 
 
-def build():
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    (OUT / "assets").mkdir(parents=True)
-    (OUT / "assets" / "site.css").write_text((HERE / "base.css").read_text() + "\n" + (HERE / "skyblue.css").read_text())
-    shutil.copy(HERE / "ghl-form.js", OUT / "assets" / "ghl-form.js")
-    (OUT / "assets" / "favicon.svg").write_text(LOGO.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ', 1))
+def build(theme=LIVE_THEME, out=OUT):
+    global THEME, THEME_KEY
+    THEME, THEME_KEY = THEMES[theme], theme
+    css = (HERE / "base.css").read_text() + "\n" + (HERE / "skyblue.css").read_text()
+    if THEME["css"]:
+        css += "\n" + (HERE / "themes" / THEME["css"]).read_text()
+    if out.exists():
+        shutil.rmtree(out)
+    (out / "assets").mkdir(parents=True)
+    (out / "assets" / "site.css").write_text(css)
+    shutil.copy(HERE / "brand.js", out / "assets" / "brand.js")
+    if (HERE / "logo.png").exists():
+        shutil.copy(HERE / "logo.png", out / "assets" / "logo.png")
+    shutil.copy(HERE / "ghl-form.js", out / "assets" / "ghl-form.js")
+    (out / "assets" / "favicon.svg").write_text(LOGO.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ', 1))
     pages = {"index.html": home(), "weekly-pool-service.html": weekly_page(), "service-areas.html": areas_page(),
              "contact.html": contact_page(), "thank-you.html": thanks_page(), "404.html": not_found_page(),
              "privacy.html": privacy_page()}
@@ -682,14 +730,55 @@ def build():
     for p in POSTS:
         pages[post_file(p)] = post_page(p)
     for name, src in pages.items():
-        (OUT / name).write_text(src)
+        (out / name).write_text(src)
     indexable = (["", "weekly-pool-service", "service-areas", "contact", "blog"] + [city_file(c)[:-5] for c in CITIES]
                  + [post_file(p)[:-5] for p in POSTS])
-    (OUT / "sitemap.xml").write_text(sitemap(indexable))
-    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BIZ['domain']}/sitemap.xml\n")
-    (OUT / "_headers").write_text(HEADERS)
-    print(f"public/: {len(pages)} pages, {len(CITIES)} city pages, {len(POSTS)} posts, {sum(len(c['zips']) for c in CITIES)} zips")
+    (out / "sitemap.xml").write_text(sitemap(indexable))
+    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BIZ['domain']}/sitemap.xml\n")
+    (out / "_headers").write_text(HEADERS)
+    print(f"{out.relative_to(ROOT)}/ ({theme}): {len(pages)} pages, {len(CITIES)} city pages, {len(POSTS)} posts, {sum(len(c['zips']) for c in CITIES)} zips")
+
+
+def build_demos():
+    if DEMOS.exists():
+        shutil.rmtree(DEMOS)
+    for key in DEMO_THEMES:
+        build(key, DEMOS / key)
+    (DEMOS / "index.html").write_text(demo_index())
+
+
+def demo_index():
+    cards = "".join(f"""<a class="d-card" href="{k}/index.html">
+  <span class="d-swatch d-{k}"></span>
+  <strong>{t['name']}</strong><span>{t['blurb']}</span></a>""" for k, t in ((k, THEMES[k]) for k in DEMO_THEMES))
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyBlue Site Demos</title><meta name="robots" content="noindex">
+<style>
+:root{{--bg:#F4F8FB;--card:#fff;--ink:#0A2236;--muted:#4A6478;--line:#D8EAF2}}
+@media (prefers-color-scheme:dark){{:root:not([data-theme="light"]){{--bg:#0B1620;--card:#13222F;--ink:#E7F2F8;--muted:#9FB6C6;--line:#24384A}}}}
+:root[data-theme="dark"]{{--bg:#0B1620;--card:#13222F;--ink:#E7F2F8;--muted:#9FB6C6;--line:#24384A}}
+*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}}
+main{{max-width:1040px;margin:0 auto;padding:48px 16px}}h1{{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 6px;text-wrap:balance}}
+p{{color:var(--muted);margin:0 0 28px;max-width:62ch}}
+.grid{{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}}
+.d-card{{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 18px;color:inherit;text-decoration:none;transition:transform .15s}}
+.d-card:hover{{transform:translateY(-2px)}}.d-card span:last-child{{color:var(--muted);font-size:.92rem}}
+.d-swatch{{height:120px;border-radius:9px;margin-bottom:8px}}
+.d-skyblue{{background:linear-gradient(180deg,#E3F7FC,#A7E3F2 70%,#0E7FB8 70%)}}
+.d-california{{background:radial-gradient(circle at 70% 42%,#FFD25C 0 14%,transparent 15%),linear-gradient(180deg,#FFB38A,#FFD9B0 55%,#7CE6F3 55%,#2BA7D6)}}
+.d-minimal{{background:linear-gradient(90deg,#fff 0 62%,#0E7FB8 62% 64%,#fff 64%);border:1px solid #E5E9EC}}
+.d-nightswim{{background:radial-gradient(ellipse at 50% 110%,#7CE6F3 0,transparent 55%),linear-gradient(180deg,#06182A,#0B2B45)}}
+.note{{margin-top:28px;font-size:.9rem}}
+</style></head><body><main>
+<h1>SkyBlue Pool Care site demos</h1>
+<p>Same pages and copy in every version. Only the look changes. Yellow highlights are placeholders for Zach's details (price, rating, license, hours).</p>
+<div class="grid">{cards}</div>
+<p class="note">Each demo is the full site: home, weekly service, service areas, blog, contact and {len(CITIES)} city pages.</p>
+</main></body></html>
+"""
 
 
 if __name__ == "__main__":
-    build()
+    arg = sys.argv[1] if len(sys.argv) > 1 else LIVE_THEME
+    build_demos() if arg == "--demos" else build(arg)

@@ -1,0 +1,64 @@
+/* Night Swim theme. Deep navy, glowing aqua, serif headlines. Upscale feel
+   for Beverly Hills, Bel Air and the Hills. Navy is the logo's #25408E deepened; the glow is the logo blue #2490C8 lifted to #7CD3F5. */
+:root{
+  --display:"Playfair Display",Georgia,serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Manrope",system-ui,sans-serif;
+  --bg:#0B1A3F; --wash:#10234D; --card:#142B5B; --ink:#D5E6F0; --heading:#FFFFFF; --muted:#93AEC2; --line:#27427A;
+  --brand:#7CD3F5; --water:#7CD3F5;
+  --link:#7CD3F5; --eyebrow:#7CD3F5; --focus:#7CD3F5; --focus-ring:rgba(124,230,243,.25);
+  --cta:#7CD3F5; --cta-hover:#B9E4FA; --cta-ink:#07122E; --ghost:#FFFFFF; --btn-radius:4px;
+  --head-bg:rgba(6,24,42,.88); --head-line:#1F3A6E; --nav:#C9DCE8; --nav-hover:#7CD3F5; --brand-ink:#fff;
+  --bullet:#7CD3F5; --check:#2490C8; --ok-bg:rgba(124,230,243,.14); --ok-ink:#7CD3F5;
+  --tag-bg:rgba(124,230,243,.12); --tag-ink:#B9E4FA; --label:#C9DCE8;
+  --field-bg:#0D1F4A; --field-line:#2E4D86; --field-radius:4px;
+  --foot-bg:#07122E; --foot-ink:#B8CEDC; --foot-head:#7CD3F5; --foot-line:rgba(255,255,255,.08);
+  color-scheme:dark;
+}
+h1,h2,h3{font-weight:600;letter-spacing:-.005em}
+h3{font-family:var(--body);font-weight:800;letter-spacing:0}
+.eyebrow{letter-spacing:.24em;font-size:.72rem}
+.btn{text-transform:uppercase;letter-spacing:.1em;font-size:.86rem;font-weight:800}
+.btn-primary{box-shadow:0 0 0 0 rgba(124,230,243,.5),0 10px 30px -10px rgba(124,230,243,.6)}
+.head-cta .btn{font-size:.78rem}
+.brand-logo{background:#fff;border-radius:8px;padding:5px 9px}
+.brand b{color:var(--brand)}
+
+.hero{background:radial-gradient(ellipse 80% 60% at 50% 115%,rgba(124,230,243,.55),rgba(14,127,184,.25) 45%,transparent 70%),linear-gradient(180deg,#07122E,#0B1A3F 50%,#13306A);padding-block:72px 0}
+.hero::before{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:repeating-linear-gradient(170deg,transparent 0 22px,rgba(124,230,243,.06) 22px 24px);pointer-events:none}
+.hero-grid{position:relative;padding-bottom:84px}
+.hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem)}
+.hero h1 span{color:var(--brand);font-style:italic;display:block}
+.hero .lede,.hero-note{color:#A9C2D4}
+.hero-card{background:rgba(13,42,68,.82);border:1px solid #2E4D86;border-radius:8px;padding:28px;box-shadow:0 30px 80px -30px #000;backdrop-filter:blur(10px)}
+.wave-band,.hero-art{display:none}
+
+.trust{background:#07122E;color:var(--ink);padding-block:30px;border-block:1px solid var(--line)}
+.trust-item strong{color:#fff;font-family:var(--display)}
+.trust-item span{color:var(--muted)}
+
+.svc,.report,.review,.quote-card,.area-card,.local,.steps li,.price-card,.inline-cta{background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:none}
+.svc{border-top:2px solid var(--brand)}
+.svc h3{color:#fff}
+.svc p,.local p{color:var(--muted)}
+.sec-visit,.sec-alt{background:var(--wash)}
+.sec-reviews,.sec-quote{background:var(--bg)}
+.sec-quote{background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(14,127,184,.25),transparent 70%),var(--bg)}
+.report{box-shadow:0 0 60px -20px rgba(124,230,243,.35)}
+.city{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:4px}
+.city:hover{border-color:var(--brand);color:var(--brand)}
+.city.core{background:var(--brand);color:var(--cta-ink)}
+.review::before{color:#7CD3F5}
+.review blockquote{font-family:var(--display);font-style:italic;font-size:1.12rem;color:#fff}
+.page-hero{background:radial-gradient(ellipse 70% 80% at 85% 0%,rgba(14,127,184,.35),transparent 70%),linear-gradient(180deg,#07122E,var(--bg))}
+.area-card:hover{border-color:var(--brand)}
+.area-card strong,.steps strong{color:#fff}
+.steps li::before{background:transparent;border:1px solid var(--brand);color:var(--brand);border-radius:4px}
+.price-card{border:1px solid var(--brand)}
+.price-from{color:#fff}
+.local h3{color:var(--brand)}
+.zip-list li{background:var(--wash)}
+.zip-list b,.zip-table th{color:#fff}
+.intake select option{background:#0D1F4A}
+.fill{background:#FFE98A;color:#3a3000}
+.foot-brand .brand-logo{height:64px}

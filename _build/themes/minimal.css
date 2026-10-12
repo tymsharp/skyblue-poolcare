@@ -1,0 +1,60 @@
+/* Minimal theme. White space, hairlines, one blue. No gradients, shadows or waves. */
+:root{
+  --display:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Inter",system-ui,sans-serif;
+  --bg:#FFFFFF; --wash:#F6F8F9; --ink:#1B2329; --heading:#25408E; --muted:#5D6870; --line:#E4E8EB;
+  --brand:#2490C8; --link:#2490C8; --eyebrow:#5D6870;
+  --cta:#2490C8; --cta-hover:#1C7DB3; --ghost:#0B1218; --btn-radius:6px;
+  --head-bg:rgba(255,255,255,.96); --head-line:#EEF1F3; --nav:#3A444B; --nav-hover:#0B1218;
+  --bullet:#2490C8; --check:#2490C8; --ok-bg:#EAF6FB; --ok-ink:#0A5E8A;
+  --tag-bg:#F1F4F6; --tag-ink:#3A444B;
+  --field-line:#D5DBDF; --field-radius:6px;
+  --foot-bg:#FFFFFF; --foot-ink:#3A444B; --foot-head:#0B1218; --foot-line:#E4E8EB;
+}
+body{font-size:16.5px}
+h1,h2,h3{font-weight:600;letter-spacing:-.025em}
+h1{font-size:clamp(2.3rem,5.6vw,4.2rem);line-height:1.04}
+h2{font-size:clamp(1.6rem,3.2vw,2.3rem)}
+.eyebrow{font-weight:500;letter-spacing:.08em;font-size:.75rem}
+.eyebrow::before{content:"";display:inline-block;width:18px;height:2px;background:var(--brand);vertical-align:middle;margin-right:10px}
+.btn{font-weight:600}
+.btn:hover{transform:none}
+.sec{padding-block:clamp(64px,9vw,128px)}
+.sec + .sec{border-top:1px solid var(--line)}
+
+.hero{background:#fff;padding-block:clamp(56px,9vw,120px) 0;border-bottom:1px solid var(--line)}
+.hero h1 span{color:var(--muted);display:block}
+.hero .lede,.hero-note{color:var(--muted)}
+.hero-note{font-weight:500}
+.hero-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:28px;box-shadow:none}
+.wave-band,.hero-art{display:none}
+
+.trust{background:#fff;color:var(--ink);padding-block:36px;border-bottom:1px solid var(--line)}
+.trust-item strong{color:var(--heading);font-weight:600}
+.trust-item span{color:var(--muted)}
+
+.svc-grid{gap:0;padding:1px 0 0 1px}
+.svc{background:none;border:1px solid var(--line);border-radius:0;margin:-1px 0 0 -1px;padding:28px 24px}
+.svc h3{color:var(--heading);font-weight:600}
+.svc li::before{width:5px;height:5px;border-radius:0}
+.sec-visit,.sec-alt,.sec-reviews,.sec-quote,.page-hero{background:#fff}
+.report,.review,.quote-card,.area-card,.local,.steps li,.price-card{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:none}
+.report{padding:28px}
+.city{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;font-weight:500}
+.city:hover{border-color:var(--heading)}
+.review::before{color:var(--heading);font-size:.8rem}
+.steps li::before{background:none;color:var(--brand);border:1px solid var(--brand);border-radius:6px;font-weight:600}
+.price-card{border:1px solid var(--heading)}
+.price-from{font-weight:600}
+.local h3{color:var(--heading);font-weight:600}
+.zip-list li{background:#fff;border:1px solid var(--line);border-radius:6px}
+.inline-cta{background:#fff;border:1px solid var(--line);border-radius:10px}
+.page-hero{border-bottom:1px solid var(--line)}
+.checks li::before{border-radius:4px}
+.faq summary{font-weight:500}
+
+.site-foot{border-top:1px solid var(--line)}
+.site-foot h3{font-weight:600;letter-spacing:.06em}
+.foot-brand .brand-logo{padding:0;background:none}
+.mobile-bar .mb-quote{border-radius:0}

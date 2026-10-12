@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyBlue Site Demos</title><meta name="robots" content="noindex">
+<style>
+:root{--bg:#F4F8FB;--card:#fff;--ink:#0A2236;--muted:#4A6478;--line:#D8EAF2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1620;--card:#13222F;--ink:#E7F2F8;--muted:#9FB6C6;--line:#24384A}}
+:root[data-theme="dark"]{--bg:#0B1620;--card:#13222F;--ink:#E7F2F8;--muted:#9FB6C6;--line:#24384A}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:48px 16px}h1{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 6px;text-wrap:balance}
+p{color:var(--muted);margin:0 0 28px;max-width:62ch}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.d-card{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 18px;color:inherit;text-decoration:none;transition:transform .15s}
+.d-card:hover{transform:translateY(-2px)}.d-card span:last-child{color:var(--muted);font-size:.92rem}
+.d-swatch{height:120px;border-radius:9px;margin-bottom:8px}
+.d-skyblue{background:linear-gradient(180deg,#E3F7FC,#A7E3F2 70%,#0E7FB8 70%)}
+.d-california{background:radial-gradient(circle at 70% 42%,#FFD25C 0 14%,transparent 15%),linear-gradient(180deg,#FFB38A,#FFD9B0 55%,#7CE6F3 55%,#2BA7D6)}
+.d-minimal{background:linear-gradient(90deg,#fff 0 62%,#0E7FB8 62% 64%,#fff 64%);border:1px solid #E5E9EC}
+.d-nightswim{background:radial-gradient(ellipse at 50% 110%,#7CE6F3 0,transparent 55%),linear-gradient(180deg,#06182A,#0B2B45)}
+.note{margin-top:28px;font-size:.9rem}
+</style></head><body><main>
+<h1>SkyBlue Pool Care site demos</h1>
+<p>Same pages and copy in every version. Only the look changes. Yellow highlights are placeholders for Zach's details (price, rating, license, hours).</p>
+<div class="grid"><a class="d-card" href="california/index.html">
+  <span class="d-swatch d-california"></span>
+  <strong>California</strong><span>Sunset sky, palms and sand, with bold modern type.</span></a><a class="d-card" href="minimal/index.html">
+  <span class="d-swatch d-minimal"></span>
+  <strong>Minimal</strong><span>White space, thin lines, one blue. Nothing extra.</span></a><a class="d-card" href="nightswim/index.html">
+  <span class="d-swatch d-nightswim"></span>
+  <strong>Night Swim</strong><span>Dark navy and glowing aqua. Upscale, for Beverly Hills and the Hills.</span></a></div>
+<p class="note">Each demo is the full site: home, weekly service, service areas, blog, contact and 15 city pages.</p>
+</main></body></html>

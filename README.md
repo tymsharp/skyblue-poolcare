@@ -18,6 +18,18 @@ python3 _build/build.py
 ```
 Writes `public/`. Commit `public/` too, so Cloudflare needs no build step.
 
+## Demo themes
+Three looks for Skyblue to pick from. Same pages and copy, only the CSS changes.
+- `california`: sunset sky, palms, sand, retro surf type.
+- `minimal`: white space, hairlines, one blue.
+- `nightswim`: dark navy, glowing aqua, serif headlines.
+```
+python3 _build/build.py --demos       # all three -> demos/<theme>/ (open demos/index.html)
+python3 _build/build.py california    # build public/ with one theme
+```
+Overrides live in `_build/themes/`, layered on `base.css` + `skyblue.css`. Once Zach picks one, set `LIVE_THEME` in `build.py` and rebuild.
+Logo: the header loads the logo from the current Webflow site. Save it as `_build/logo.png` to serve it locally before launch.
+
 ## Deploy on Cloudflare Pages
 1. Workers & Pages > Create > Pages > Connect to Git > this repo.
 2. Framework preset **None**. Build command **empty**. Output directory **`public`**.

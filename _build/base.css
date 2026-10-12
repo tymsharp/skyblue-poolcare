@@ -178,3 +178,4 @@ p{margin:0}
 .foot-list a:hover{text-decoration:underline}
 .foot-list.cols{grid-template-columns:repeat(2,1fr);gap:6px 16px}
 .foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:48px;padding-top:24px;border-top:1px solid var(--foot-line);font-size:.85rem;opacity:.85}
+.foot-list + h3{margin-top:28px}
