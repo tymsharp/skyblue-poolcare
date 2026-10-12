@@ -1,0 +1,91 @@
+/* SkyBlue Pool Care theme. Layers on base.css. Accent #7CE6F3 is from the current logo icons. */
+:root{
+  --display:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wordmark:var(--display);
+  --body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Nunito Sans",system-ui,sans-serif;
+  --bg:#FFFFFF; --wash:#EEF8FC; --ink:#123047; --heading:#0A2236; --muted:#4A6478; --line:#D8EAF2;
+  --brand:#0E7FB8; --water:#7CE6F3; --sky:#BFEFF8;
+  --link:#0A6FA3; --eyebrow:#0E7FB8; --focus:#0E7FB8; --focus-ring:rgba(14,127,184,.2);
+  --cta:#F2662B; --cta-hover:#D9531B; --cta-ink:#fff; --ghost:#0A2236; --btn-radius:999px;
+  --head-bg:rgba(255,255,255,.94); --head-line:#E1F0F6; --nav:#123047; --nav-hover:#0E7FB8; --brand-ink:#0A2236;
+  --bullet:#0E7FB8; --check:#14A37F; --ok-bg:#DFF5EE; --ok-ink:#11684F;
+  --tag-bg:#E2F4FA; --tag-ink:#0A5E8A; --label:#123047;
+  --field-bg:#fff; --field-line:#C6DEE9; --field-radius:12px;
+  --foot-bg:#0A2236; --foot-ink:#D6ECF5; --foot-head:#7CE6F3; --foot-line:rgba(255,255,255,.12);
+  color-scheme:light;
+}
+h1,h2,h3{font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,5vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+
+.brand{gap:10px;font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-.01em}
+.brand svg{width:40px;height:40px;flex-shrink:0}
+.brand b{color:var(--brand);font-weight:700}
+
+.hero{background:linear-gradient(180deg,#E3F7FC 0%,#C9EEF8 60%,#A7E3F2 100%);padding-block:52px 0}
+.hero-grid{padding-bottom:60px}
+.hero h1 span{color:var(--brand);display:block}
+.hero .lede{color:#24465C}
+.hero-note{margin-top:18px;font-size:.92rem;font-weight:700;color:#24465C}
+.hero-card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 24px 60px -24px rgba(10,34,54,.4)}
+.wave-band{height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 22'%3E%3Cpath d='M0 11 Q15 0 30 11 T60 11 T90 11 T120 11 V22 H0Z' fill='%230E7FB8'/%3E%3C/svg%3E") repeat-x bottom/120px 22px}
+
+.trust{background:var(--brand);color:#fff;padding-block:26px}
+.trust-item strong{color:#fff}
+.trust-item span{color:#D4F1FA}
+
+.svc{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column}
+.svc h3{color:var(--brand);font-size:1.35rem}
+.svc h3 a{color:inherit;text-decoration:none}
+.svc p{color:var(--muted)}
+.sec-visit,.sec-alt{background:var(--wash)}
+.report{background:#fff;border-radius:18px;border:1.5px solid var(--line);box-shadow:0 16px 40px -28px rgba(10,34,54,.5)}
+.city{background:var(--wash);color:var(--ink);border-radius:999px;border:1.5px solid transparent}
+.city:hover{border-color:var(--brand)}
+.city.core{background:var(--brand);color:#fff}
+.sec-reviews{background:linear-gradient(180deg,#fff,var(--wash))}
+.review{background:#fff;border-radius:18px;border:1.5px solid var(--line)}
+.review::before{content:"\2605\2605\2605\2605\2605";color:#F2A516;letter-spacing:3px}
+.sec-quote{background:linear-gradient(180deg,var(--wash),#fff)}
+.quote-card{background:#fff;border-radius:22px;box-shadow:0 24px 60px -30px rgba(10,34,54,.45);border:1.5px solid var(--line)}
+.page-hero{background:linear-gradient(180deg,#E3F7FC,#F3FBFE)}
+.area-card{background:#fff;border:1.5px solid var(--line);border-radius:16px}
+.area-card:hover{border-color:var(--brand)}
+.inline-cta{background:var(--wash);border-radius:18px}
+
+/* steps */
+.steps{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:16px;counter-reset:step}
+@media (min-width:800px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps li{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:22px;counter-increment:step}
+.steps li::before{content:counter(step);display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;font:700 1rem var(--display);margin-bottom:10px}
+.steps strong{display:block;font-family:var(--display);font-size:1.12rem;color:var(--heading)}
+.steps span{color:var(--muted);font-size:.96rem}
+
+/* price */
+.price-card{background:#fff;border:2px solid var(--brand);border-radius:22px;padding:28px;max-width:520px}
+.price-from{font:700 2.6rem/1 var(--display);color:var(--heading);margin:8px 0}
+.price-from small{font-size:1rem;color:var(--muted);font-weight:600}
+.price-card p{color:var(--muted)}
+
+/* local cards on city pages */
+.local-grid{display:grid;gap:16px;margin-top:24px}
+@media (min-width:800px){.local-grid{grid-template-columns:repeat(3,1fr)}}
+.local{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:22px}
+.local h3{font-size:1.15rem;color:var(--brand);margin-bottom:8px}
+.local p{color:var(--muted);margin:0;font-size:.98rem}
+
+/* zips */
+.zip-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:12px 0 0}
+.zip-list li{background:var(--wash);border-radius:10px;padding:.45em .75em;font-size:.92rem}
+.zip-list b{font-variant-numeric:tabular-nums;margin-right:.35em;color:var(--heading)}
+.zip-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.95rem}
+.zip-table th,.zip-table td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.zip-table th{font-weight:800;color:var(--heading)}
+.zip-table td:first-child{font-variant-numeric:tabular-nums;font-weight:700}
+.region-head{margin-top:36px}
+.area-card strong{display:block;font-family:var(--display);font-size:1.15rem;color:var(--heading)}
+.area-card span{color:var(--muted);font-size:.92rem}
+.area-card{display:block;padding:18px;text-decoration:none}
+.legal{max-width:70ch}
+.legal h2{font-size:1.3rem;margin-top:28px}

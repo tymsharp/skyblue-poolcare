@@ -1,0 +1,75 @@
+zip,region,city,neighborhoods,page_slug,launch_wave,city_page
+91040,San Fernando Valley,Los Angeles,Sunland; Shadow Hills,/pool-service/sunland-91040,3,/pool-service-burbank
+91042,San Fernando Valley,Los Angeles,Tujunga,/pool-service/tujunga-91042,3,/pool-service-burbank
+91302,San Fernando Valley,Calabasas,Calabasas; Hidden Hills,/pool-service/calabasas-91302,1,/pool-service-calabasas
+91303,San Fernando Valley,Los Angeles,Canoga Park,/pool-service/canoga-park-91303,3,/pool-service-calabasas
+91304,San Fernando Valley,Los Angeles,Canoga Park; West Hills (north),/pool-service/west-hills-canoga-park-91304,2,/pool-service-calabasas
+91306,San Fernando Valley,Los Angeles,Winnetka,/pool-service/winnetka-91306,3,/pool-service-woodland-hills
+91307,San Fernando Valley,Los Angeles,West Hills; Bell Canyon,/pool-service/west-hills-91307,1,/pool-service-calabasas
+91311,San Fernando Valley,Los Angeles,Chatsworth,/pool-service/chatsworth-91311,2,/pool-service-northridge
+91316,San Fernando Valley,Los Angeles,Encino (south of Ventura); Lake Balboa edge,/pool-service/encino-91316,1,/pool-service-encino
+91324,San Fernando Valley,Los Angeles,Northridge (south),/pool-service/northridge-91324,2,/pool-service-northridge
+91325,San Fernando Valley,Los Angeles,Northridge (north),/pool-service/northridge-91325,2,/pool-service-northridge
+91326,San Fernando Valley,Los Angeles,Porter Ranch,/pool-service/porter-ranch-91326,1,/pool-service-northridge
+91331,San Fernando Valley,Los Angeles,Pacoima; Arleta,/pool-service/pacoima-arleta-91331,3,/pool-service-northridge
+91335,San Fernando Valley,Los Angeles,Reseda,/pool-service/reseda-91335,3,/pool-service-woodland-hills
+91340,San Fernando Valley,San Fernando,San Fernando,/pool-service/san-fernando-91340,3,/pool-service-northridge
+91342,San Fernando Valley,Los Angeles,Sylmar; Lake View Terrace; Kagel Canyon,/pool-service/sylmar-91342,3,/pool-service-northridge
+91343,San Fernando Valley,Los Angeles,North Hills,/pool-service/north-hills-91343,3,/pool-service-northridge
+91344,San Fernando Valley,Los Angeles,Granada Hills,/pool-service/granada-hills-91344,2,/pool-service-northridge
+91345,San Fernando Valley,Los Angeles,Mission Hills,/pool-service/mission-hills-91345,3,/pool-service-northridge
+91352,San Fernando Valley,Los Angeles,Sun Valley,/pool-service/sun-valley-91352,3,/pool-service-burbank
+91356,San Fernando Valley,Los Angeles,Tarzana,/pool-service/tarzana-91356,1,/pool-service-encino
+91364,San Fernando Valley,Los Angeles,Woodland Hills (south of Ventura),/pool-service/woodland-hills-91364,1,/pool-service-woodland-hills
+91367,San Fernando Valley,Los Angeles,Woodland Hills; Warner Center,/pool-service/woodland-hills-91367,1,/pool-service-woodland-hills
+91401,San Fernando Valley,Los Angeles,Van Nuys; Valley Glen,/pool-service/van-nuys-valley-glen-91401,3,/pool-service-sherman-oaks
+91402,San Fernando Valley,Los Angeles,Panorama City,/pool-service/panorama-city-91402,3,/pool-service-sherman-oaks
+91403,San Fernando Valley,Los Angeles,Sherman Oaks (south of Ventura),/pool-service/sherman-oaks-91403,1,/pool-service-sherman-oaks
+91405,San Fernando Valley,Los Angeles,Van Nuys,/pool-service/van-nuys-91405,3,/pool-service-sherman-oaks
+91406,San Fernando Valley,Los Angeles,Van Nuys; Lake Balboa,/pool-service/lake-balboa-91406,3,/pool-service-encino
+91411,San Fernando Valley,Los Angeles,Van Nuys (Sherman Oaks border),/pool-service/van-nuys-91411,3,/pool-service-sherman-oaks
+91423,San Fernando Valley,Los Angeles,Sherman Oaks (north and east),/pool-service/sherman-oaks-91423,1,/pool-service-sherman-oaks
+91436,San Fernando Valley,Los Angeles,Encino (hills),/pool-service/encino-91436,1,/pool-service-encino
+91501,San Fernando Valley,Burbank,Burbank (northeast); Burbank hills,/pool-service/burbank-91501,2,/pool-service-burbank
+91502,San Fernando Valley,Burbank,Downtown Burbank,/pool-service/burbank-91502,3,/pool-service-burbank
+91504,San Fernando Valley,Burbank,Burbank (north; airport area),/pool-service/burbank-91504,2,/pool-service-burbank
+91505,San Fernando Valley,Burbank,Burbank Media District; Magnolia Park,/pool-service/burbank-91505,2,/pool-service-burbank
+91506,San Fernando Valley,Burbank,Burbank Rancho District,/pool-service/burbank-91506,2,/pool-service-burbank
+91601,San Fernando Valley,Los Angeles,North Hollywood (NoHo Arts District),/pool-service/north-hollywood-91601,3,/pool-service-studio-city
+91602,San Fernando Valley,Los Angeles,Toluca Lake; North Hollywood,/pool-service/toluca-lake-91602,1,/pool-service-studio-city
+91604,San Fernando Valley,Los Angeles,Studio City,/pool-service/studio-city-91604,1,/pool-service-studio-city
+91605,San Fernando Valley,Los Angeles,North Hollywood (north),/pool-service/north-hollywood-91605,3,/pool-service-studio-city
+91606,San Fernando Valley,Los Angeles,North Hollywood; Valley Glen,/pool-service/north-hollywood-91606,3,/pool-service-studio-city
+91607,San Fernando Valley,Los Angeles,Valley Village,/pool-service/valley-village-91607,2,/pool-service-studio-city
+91608,San Fernando Valley,Universal City,Universal City,/pool-service/universal-city-91608,3,/pool-service-studio-city
+90024,Westside and Hollywood,Los Angeles,Westwood; Holmby Hills,/pool-service/westwood-90024,2,/pool-service-brentwood
+90025,Westside and Hollywood,Los Angeles,West Los Angeles; Sawtelle,/pool-service/west-la-90025,3,/pool-service-brentwood
+90027,Westside and Hollywood,Los Angeles,Los Feliz; Griffith Park,/pool-service/los-feliz-90027,2,/pool-service-hollywood-hills
+90028,Westside and Hollywood,Los Angeles,Hollywood,/pool-service/hollywood-90028,3,/pool-service-hollywood-hills
+90034,Westside and Hollywood,Los Angeles,Palms; Castle Heights,/pool-service/palms-90034,3,/pool-service-culver-city
+90035,Westside and Hollywood,Los Angeles,Beverlywood; Pico-Robertson; Carthay,/pool-service/beverlywood-90035,2,/pool-service-beverly-hills
+90036,Westside and Hollywood,Los Angeles,Fairfax; Hancock Park (west); Park La Brea,/pool-service/fairfax-90036,3,/pool-service-west-hollywood
+90038,Westside and Hollywood,Los Angeles,Hollywood (south); Melrose,/pool-service/hollywood-90038,3,/pool-service-hollywood-hills
+90046,Westside and Hollywood,Los Angeles,Hollywood Hills; Laurel Canyon; West Hollywood (east),/pool-service/laurel-canyon-90046,1,/pool-service-hollywood-hills
+90048,Westside and Hollywood,Los Angeles,Beverly Grove; West Hollywood (south),/pool-service/beverly-grove-90048,3,/pool-service-west-hollywood
+90049,Westside and Hollywood,Los Angeles,Brentwood,/pool-service/brentwood-90049,1,/pool-service-brentwood
+90064,Westside and Hollywood,Los Angeles,Cheviot Hills; Rancho Park,/pool-service/cheviot-hills-90064,2,/pool-service-brentwood
+90066,Westside and Hollywood,Los Angeles,Mar Vista,/pool-service/mar-vista-90066,2,/pool-service-culver-city
+90067,Westside and Hollywood,Los Angeles,Century City,/pool-service/century-city-90067,3,/pool-service-beverly-hills
+90068,Westside and Hollywood,Los Angeles,Hollywood Hills; Hollywood Dell; Lake Hollywood,/pool-service/hollywood-hills-90068,1,/pool-service-hollywood-hills
+90069,Westside and Hollywood,West Hollywood,West Hollywood; Sunset Strip; Bird Streets,/pool-service/west-hollywood-90069,1,/pool-service-west-hollywood
+90077,Westside and Hollywood,Los Angeles,Bel Air,/pool-service/bel-air-90077,1,/pool-service-beverly-hills
+90094,Westside and Hollywood,Los Angeles,Playa Vista,/pool-service/playa-vista-90094,3,/pool-service-culver-city
+90210,Westside and Hollywood,Beverly Hills,Beverly Hills (north); Beverly Hills Post Office,/pool-service/beverly-hills-90210,1,/pool-service-beverly-hills
+90211,Westside and Hollywood,Beverly Hills,Beverly Hills (south),/pool-service/beverly-hills-90211,2,/pool-service-beverly-hills
+90212,Westside and Hollywood,Beverly Hills,Beverly Hills (Golden Triangle; south),/pool-service/beverly-hills-90212,2,/pool-service-beverly-hills
+90230,Westside and Hollywood,Culver City,Culver City (south); Fox Hills,/pool-service/culver-city-90230,3,/pool-service-culver-city
+90232,Westside and Hollywood,Culver City,Culver City (downtown and north),/pool-service/culver-city-90232,3,/pool-service-culver-city
+90272,Westside and Hollywood,Los Angeles,Pacific Palisades,/pool-service/pacific-palisades-90272,1,/pool-service-brentwood
+90291,Westside and Hollywood,Los Angeles,Venice,/pool-service/venice-90291,3,/pool-service-santa-monica
+90292,Westside and Hollywood,Marina del Rey,Marina del Rey,/pool-service/marina-del-rey-90292,3,/pool-service-santa-monica
+90401,Westside and Hollywood,Santa Monica,Downtown Santa Monica,/pool-service/santa-monica-90401,3,/pool-service-santa-monica
+90402,Westside and Hollywood,Santa Monica,North of Montana,/pool-service/santa-monica-90402,1,/pool-service-santa-monica
+90403,Westside and Hollywood,Santa Monica,Santa Monica (Wilshire-Montana),/pool-service/santa-monica-90403,2,/pool-service-santa-monica
+90404,Westside and Hollywood,Santa Monica,Santa Monica (Mid-City; Pico),/pool-service/santa-monica-90404,3,/pool-service-santa-monica
+90405,Westside and Hollywood,Santa Monica,Ocean Park; Sunset Park,/pool-service/santa-monica-90405,2,/pool-service-santa-monica
