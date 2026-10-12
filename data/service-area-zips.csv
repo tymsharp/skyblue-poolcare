@@ -10,16 +10,16 @@ zip,region,city,neighborhoods,page_slug,launch_wave,city_page
 91316,San Fernando Valley,Los Angeles,Encino (south of Ventura); Lake Balboa edge,/pool-service/encino-91316,1,/pool-service-encino
 91324,San Fernando Valley,Los Angeles,Northridge (south),/pool-service/northridge-91324,2,/pool-service-northridge
 91325,San Fernando Valley,Los Angeles,Northridge (north),/pool-service/northridge-91325,2,/pool-service-northridge
-91326,San Fernando Valley,Los Angeles,Porter Ranch,/pool-service/porter-ranch-91326,1,/pool-service-northridge
+91326,San Fernando Valley,Los Angeles,Porter Ranch,/pool-service/porter-ranch-91326,1,/pool-service-porter-ranch-granada-hills
 91331,San Fernando Valley,Los Angeles,Pacoima; Arleta,/pool-service/pacoima-arleta-91331,3,/pool-service-northridge
 91335,San Fernando Valley,Los Angeles,Reseda,/pool-service/reseda-91335,3,/pool-service-woodland-hills
 91340,San Fernando Valley,San Fernando,San Fernando,/pool-service/san-fernando-91340,3,/pool-service-northridge
 91342,San Fernando Valley,Los Angeles,Sylmar; Lake View Terrace; Kagel Canyon,/pool-service/sylmar-91342,3,/pool-service-northridge
 91343,San Fernando Valley,Los Angeles,North Hills,/pool-service/north-hills-91343,3,/pool-service-northridge
-91344,San Fernando Valley,Los Angeles,Granada Hills,/pool-service/granada-hills-91344,2,/pool-service-northridge
+91344,San Fernando Valley,Los Angeles,Granada Hills,/pool-service/granada-hills-91344,2,/pool-service-porter-ranch-granada-hills
 91345,San Fernando Valley,Los Angeles,Mission Hills,/pool-service/mission-hills-91345,3,/pool-service-northridge
 91352,San Fernando Valley,Los Angeles,Sun Valley,/pool-service/sun-valley-91352,3,/pool-service-burbank
-91356,San Fernando Valley,Los Angeles,Tarzana,/pool-service/tarzana-91356,1,/pool-service-encino
+91356,San Fernando Valley,Los Angeles,Tarzana,/pool-service/tarzana-91356,1,/pool-service-tarzana
 91364,San Fernando Valley,Los Angeles,Woodland Hills (south of Ventura),/pool-service/woodland-hills-91364,1,/pool-service-woodland-hills
 91367,San Fernando Valley,Los Angeles,Woodland Hills; Warner Center,/pool-service/woodland-hills-91367,1,/pool-service-woodland-hills
 91401,San Fernando Valley,Los Angeles,Van Nuys; Valley Glen,/pool-service/van-nuys-valley-glen-91401,3,/pool-service-sherman-oaks

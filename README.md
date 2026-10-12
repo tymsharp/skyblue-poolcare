@@ -5,8 +5,8 @@ Static site for SkyBlue Pool Care. Same pattern as bjgdigital.com: plain HTML, o
 ## Pages (25)
 - Home, Weekly Pool Service, Service Areas, Contact, Privacy, Thank You (noindex), 404.
 - Blog index plus 4 posts, `blog-<slug>.html` (pricing, hard water, heat-wave green pools, winter service). Posts live in `POSTS` in `_build/content.py`; add one there and rebuild.
-- 13 city pages, `pool-service-<city>.html`. All 74 service-area zips are listed on the city page that covers them. No per-zip pages, on purpose (doorway-page risk).
-  - Valley: Calabasas & West Hills, Woodland Hills, Encino & Tarzana, Sherman Oaks & Van Nuys, Studio City & Toluca Lake, Northridge & Porter Ranch, Burbank.
+- 15 city pages, `pool-service-<city>.html`. All 74 service-area zips are listed on the city page that covers them. No per-zip pages, on purpose (doorway-page risk).
+  - Valley: Calabasas & West Hills, Woodland Hills, Encino & Lake Balboa, Tarzana, Sherman Oaks & Van Nuys, Studio City & Toluca Lake, Northridge & Chatsworth, Porter Ranch & Granada Hills, Burbank.
   - Westside: Hollywood Hills & Los Feliz, West Hollywood, Beverly Hills & Bel Air, Brentwood & Pacific Palisades, Santa Monica & Venice, Culver City & Mar Vista.
 
 ## Edit and build
@@ -22,7 +22,7 @@ Writes `public/`. Commit `public/` too, so Cloudflare needs no build step.
 1. Workers & Pages > Create > Pages > Connect to Git > this repo.
 2. Framework preset **None**. Build command **empty**. Output directory **`public`**.
 3. Custom domain `skyblue-poolcare.com`, plus `www` with a 301 redirect rule to the apex.
-4. Search Console: add the domain, submit `/sitemap.xml`, request indexing on the 13 city pages.
+4. Search Console: add the domain, submit `/sitemap.xml`, request indexing on the 15 city pages.
 
 ## Before launch (yellow `class="fill"` in the HTML)
 - **Weekly starting price** (`price_from` in content.py) and whether chemicals are included.

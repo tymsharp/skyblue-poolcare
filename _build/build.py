@@ -496,7 +496,7 @@ def areas_page():
   <p class="areas-note">Don't see your zip? <a href="contact.html">Ask about your address.</a></p>
 </div></section>{quote_section()}"""
     return (head("Pool Service Areas: Valley & Westside LA | SkyBlue Pool Care",
-                 "SkyBlue Pool Care serves 74 zip codes: Calabasas, Woodland Hills, Encino, Sherman Oaks, Studio City, Northridge, Burbank, Hollywood Hills, Beverly Hills, Brentwood, Santa Monica and more.",
+                 "SkyBlue Pool Care serves 74 zip codes: Calabasas, Woodland Hills, Encino, Tarzana, Sherman Oaks, Studio City, Northridge, Porter Ranch, Granada Hills, Burbank, Hollywood Hills, Beverly Hills, Brentwood, Santa Monica and more.",
                  "service-areas", graph(business_schema(), crumbs_schema(crumbs)))
             + nav("areas") + main + footer())
 

@@ -125,7 +125,7 @@ FAQ = [
      "Yes. We check salt levels and keep the salt cell clean so it lasts."),
 ]
 
-# 13 city pages. zips = every service-area zip folded into this page.
+# 15 city pages. zips = every service-area zip folded into this page.
 # local = things that are true about pools in this area; faq = local questions.
 CITIES = [
     # ---------------- San Fernando Valley
@@ -160,10 +160,10 @@ CITIES = [
         ],
     },
     {
-        "slug": "encino", "name": "Encino & Tarzana", "short": "Encino", "region": "valley",
-        "zips": ["91316", "91436", "91356", "91406"],
-        "hoods": ["Encino", "Encino Hills", "Tarzana", "Lake Balboa"],
-        "intro": "Encino and Tarzana run along Ventura Boulevard, with hillside homes to the south and flatter streets to the north down to Lake Balboa. Tarzana is named after Tarzan, whose author Edgar Rice Burroughs owned the ranch the neighborhood was built on.",
+        "slug": "encino", "name": "Encino & Lake Balboa", "short": "Encino", "region": "valley",
+        "zips": ["91316", "91436", "91406"],
+        "hoods": ["Encino", "Encino Hills", "Lake Balboa", "Van Nuys (west)"],
+        "intro": "Encino runs along Ventura Boulevard, with hillside homes climbing south toward Mulholland and flatter streets running north to Lake Balboa and the Sepulveda Basin. In the Encino hills (91436) about seven of every ten houses have a pool, the highest share anywhere we serve.",
         "local": [
             ("Mature trees", "Older Encino lots have big oaks, sycamores and pines. They shade the pool, which helps, and drop leaves and needles, which doesn't. We empty baskets every visit and brush the tile line where debris collects."),
             ("Hillside access in 91436", "Pools in the Encino hills often sit on terraces with stairs down to the equipment. Your tech knows the property before the first visit."),
@@ -171,7 +171,22 @@ CITIES = [
         ],
         "faq": [
             ("Do you cover the Encino hills south of Ventura?", "Yes. 91436 is on our Encino route, including hillside homes with stairs down to the equipment."),
-            ("Is Tarzana on the same route as Encino?", "Yes. Tarzana (91356) and Lake Balboa (91406) are served from our Encino routes."),
+            ("Do you cover Lake Balboa?", "Yes. Lake Balboa (91406) and Encino north of Ventura (91316) are on the same route as the Encino hills."),
+        ],
+    },
+    {
+        "slug": "tarzana", "name": "Tarzana", "short": "Tarzana", "region": "valley",
+        "zips": ["91356"],
+        "hoods": ["Tarzana", "Tarzana hills", "Braemar", "Melody Acres"],
+        "intro": "Tarzana is named after Tarzan. Author Edgar Rice Burroughs owned the ranch the neighborhood was built on. South of Ventura Boulevard the streets climb into the hills toward Mulholland. LA County Assessor records show about 3,600 Tarzana homes with a pool, roughly two of every three houses.",
+        "local": [
+            ("Pools on almost every lot", "With two of every three Tarzana houses on a pool, your tech is often servicing your neighbors too. That keeps visits on schedule week to week."),
+            ("Hillside pools south of Ventura", "Homes up toward Mulholland and around Braemar often sit on steep lots with equipment down a slope or under a deck. We plan access before the first visit."),
+            ("West Valley heat", "Tarzana runs hotter than the Westside all summer. Warm water burns through chlorine fast, so we test and adjust every visit to keep algae from starting."),
+        ],
+        "faq": [
+            ("Do you cover all of Tarzana?", "Yes. All of 91356 is on our route, from the flats north of Ventura Boulevard to the hills south toward Mulholland."),
+            ("Is Tarzana on the same route as Encino?", "Yes. Tarzana and Encino are next door, and your tech works both."),
         ],
     },
     {
@@ -205,18 +220,33 @@ CITIES = [
         ],
     },
     {
-        "slug": "northridge", "name": "Northridge & Granada Hills", "short": "Northridge", "region": "valley",
-        "zips": ["91324", "91325", "91326", "91311", "91344", "91343", "91345", "91340", "91342", "91331"],
-        "hoods": ["Northridge", "Granada Hills", "Porter Ranch", "Chatsworth", "North Hills", "Mission Hills", "San Fernando", "Sylmar", "Pacoima", "Arleta"],
-        "intro": "The north Valley is ranch-style homes and big flat lots, from Northridge and Granada Hills to the newer hillside tracts of Porter Ranch. Granada Hills has Balboa Highlands, one of the Valley's Eichler neighborhoods, with pools built into the original mid-century design.",
+        "slug": "northridge", "name": "Northridge & Chatsworth", "short": "Northridge", "region": "valley",
+        "zips": ["91324", "91325", "91311", "91343", "91345", "91340", "91342", "91331"],
+        "hoods": ["Northridge", "Chatsworth", "North Hills", "Mission Hills", "San Fernando", "Sylmar", "Pacoima", "Arleta"],
+        "intro": "The north Valley is ranch-style homes on big flat lots, from Northridge around Cal State Northridge out to the horse properties and rocky hills of Chatsworth. Chatsworth (91311) alone has about 3,400 homes with a pool, and north Northridge (91325) about 2,900.",
         "local": [
             ("Big lots, bigger pools", "North Valley lots are large and so are many pools. Bigger pools take more chemical, so we size every treatment to your pool's volume."),
-            ("Porter Ranch HOAs", "Many Porter Ranch communities have HOA rules for service vehicles and gate access. We work within them."),
+            ("Horse property in Chatsworth", "Chatsworth has ranch lots with horses, dirt and hay nearby. Dust and debris end up in the water, so baskets and filters get extra attention."),
             ("Wind off the mountains", "Santa Ana winds come through the north Valley passes and fill pools with leaves and dust. After a wind event we brush and vacuum, and the filter gets checked."),
         ],
         "faq": [
-            ("Do you cover Chatsworth and Granada Hills?", "Yes. Chatsworth (91311), Granada Hills (91344), North Hills, Mission Hills, San Fernando, Sylmar, Pacoima and Arleta are all on our north Valley routes."),
+            ("Do you cover Chatsworth?", "Yes. Chatsworth (91311) is on our Northridge route."),
+            ("Which other north Valley areas do you cover?", "North Hills, Mission Hills, San Fernando, Sylmar, Pacoima and Arleta are all on our north Valley routes."),
+        ],
+    },
+    {
+        "slug": "porter-ranch-granada-hills", "name": "Porter Ranch & Granada Hills", "short": "Porter Ranch", "region": "valley",
+        "zips": ["91326", "91344"],
+        "hoods": ["Porter Ranch", "Granada Hills", "Balboa Highlands", "Knollwood"],
+        "intro": "Porter Ranch and Granada Hills sit at the top of the Valley against the Santa Susana Mountains. Between them they have about 9,200 homes with a pool, more than any other part of our service area. Porter Ranch is mostly newer hillside tracts. Granada Hills is 1950s and '60s ranch homes, including the Eichlers of Balboa Highlands.",
+        "local": [
+            ("Porter Ranch HOAs and gates", "Many Porter Ranch communities have HOA rules for service vehicles and gate access. Tell us the rules and gate code and we work within them."),
+            ("Mid-century pools in Granada Hills", "Granada Hills pools are often original to 1950s and '60s homes, with older plaster and equipment. Our 21-point inspection after your first service shows what's worn before it fails."),
+            ("Wind and ash off the mountains", "Santa Ana winds come straight down from the Santa Susanas, and brush fires in the hills can drop ash in the water. After a wind or fire event we brush, vacuum and check the filter."),
+        ],
+        "faq": [
             ("Can you work with my Porter Ranch HOA?", "Yes. Tell us the gate and vehicle rules and we'll follow them."),
+            ("Do you cover all of Granada Hills?", "Yes. All of 91344 is on our route, north and south of the 118 freeway, including Balboa Highlands and Knollwood."),
         ],
     },
     {
@@ -388,7 +418,7 @@ POSTS = [
                     "Keep the filter clean so it can catch what the chlorine kills.",
                     "Run the pump long enough on hot weeks to turn the water over."]),
             ("h2", "If it's already green"),
-            ("p", "Our green-to-blue cleanup brings it back with algae treatment, brushing and a filter clean. Then weekly service keeps it there. Serving <a href=\"pool-service-woodland-hills.html\">Woodland Hills</a>, <a href=\"pool-service-encino.html\">Encino</a>, <a href=\"pool-service-northridge.html\">Northridge</a> and the rest of the Valley."),
+            ("p", "Our green-to-blue cleanup brings it back with algae treatment, brushing and a filter clean. Then weekly service keeps it there. Serving <a href=\"pool-service-woodland-hills.html\">Woodland Hills</a>, <a href=\"pool-service-encino.html\">Encino</a>, <a href=\"pool-service-northridge.html\">Northridge</a>, <a href=\"pool-service-tarzana.html\">Tarzana</a> and the rest of the Valley."),
         ],
     },
     {
