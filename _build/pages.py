@@ -11,13 +11,17 @@ as the orphan `gh-pages` branch of tymsharp/skyblue-poolcare:
       && git commit -q -m "Demo previews" \
       && git push -f https://github.com/tymsharp/skyblue-poolcare.git gh-pages
 
-Hosting on Cloudflare (the branch carries a wrangler.jsonc, so no build step):
+Hosting on Cloudflare Pages (no build step, the branch is the finished tree):
 
-  * Workers, from any checkout of the branch:  npx wrangler deploy
-    -> https://skyblue-demo.<account>.workers.dev
-  * Or in the Cloudflare dashboard: Workers & Pages > Create > Pages >
-    Connect to Git > tymsharp/skyblue-poolcare, production branch gh-pages,
-    no build command, output directory "/".
+  * Dashboard: Workers & Pages > Create > Pages > Connect to Git >
+    tymsharp/skyblue-poolcare, production branch gh-pages, no build
+    command, output directory "/". Redeploys itself on every push.
+  * CLI, from a checkout of the branch:
+        npx wrangler pages project create skyblue-pool-demos --production-branch gh-pages
+        npx wrangler pages deploy . --project-name skyblue-pool-demos
+  * Or let GitHub do it: .github/workflows/demos-cloudflare.yml builds
+    demo-host/ on every push and deploys it once the two Cloudflare
+    secrets exist on the repo (see the comment at the top of that file).
 
 GitHub Pages also serves the same branch at
 https://tymsharp.github.io/skyblue-poolcare/ until the branch is deleted.
@@ -42,17 +46,6 @@ HEADERS = """/*
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
 """
-
-WRANGLER = """{
-  // Cloudflare Worker serving this folder as static assets.
-  // Deploy from a checkout of the gh-pages branch:  npx wrangler deploy
-  "name": "skyblue-demo",
-  "compatibility_date": "2026-09-01",
-  "assets": { "directory": "./", "html_handling": "auto-trailing-slash" }
-}
-"""
-
-ASSETSIGNORE = "wrangler.jsonc\n.assetsignore\n.git\n"
 
 
 def copy_page(src, dst):
@@ -80,8 +73,6 @@ def build():
                 n += p.suffix == ".html"
     (OUT / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
     (OUT / "_headers").write_text(HEADERS)
-    (OUT / "wrangler.jsonc").write_text(WRANGLER)
-    (OUT / ".assetsignore").write_text(ASSETSIGNORE)
     (OUT / ".nojekyll").write_text("")
     print(f"demo-host/: picker + {n} demo pages, all noindex")
 
