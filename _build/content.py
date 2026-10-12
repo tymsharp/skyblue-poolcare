@@ -57,9 +57,9 @@ SERVICES = [
     {
         "slug": "repair",
         "name": "Equipment Repair",
-        "short": "Pumps, heaters, filters and leaks, diagnosed in plain terms.",
-        "body": "When a pump won't prime, a heater won't fire or the water level keeps dropping, we find the cause and tell you what it costs before work starts.",
-        "points": ["Pumps, motors and heaters", "Filters, valves and leaks", "Clear quote before any work"],
+        "short": "Pumps, filters, valves and leaks, diagnosed in plain terms.",
+        "body": "When a pump won't prime, a valve sticks or the water level keeps dropping, we find the cause and tell you what it costs before work starts.",
+        "points": ["Pumps, motors and valves", "Filters, plumbing and leaks", "Clear quote before any work"],
     },
     {
         "slug": "salt",
