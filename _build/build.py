@@ -35,8 +35,8 @@ THEMES = {
         "color": "#2490C8", "css": None,
     },
     "california": {
-        "name": "California", "blurb": "Sunset sky, palms and sand. Warm, retro surf feel.",
-        "fonts": "family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Yellowtail&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800",
+        "name": "California", "blurb": "Sunset sky, palms and sand, with bold modern type.",
+        "fonts": "family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700",
         "color": "#FF8A5B", "css": "california.css",
     },
     "minimal": {
