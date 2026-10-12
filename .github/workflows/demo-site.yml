@@ -1,0 +1,35 @@
+# Rebuilds the demo previews on every push to the demo branch and publishes
+# them as the orphan `demo-site` branch. Cloudflare Pages (project
+# skyblue-poolcare) is connected to that branch and redeploys on its own, so
+# https://skyblue-poolcare.pages.dev/ always shows the latest demos.
+# Needs no secrets: GITHUB_TOKEN can push to this repository.
+name: Publish demo site
+
+on:
+  push:
+    branches: [claude/demo-themes-j28sca]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the demo previews
+        run: |
+          python3 _build/build.py --demos
+          python3 _build/pages.py
+
+      - name: Push demo-host/ as the demo-site branch
+        run: |
+          cd demo-host
+          git init -q -b demo-site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Demo previews from ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" demo-site

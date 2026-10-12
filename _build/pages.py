@@ -4,31 +4,24 @@
     python3 _build/pages.py             # then demo-host/
 
 demo-host/ is a plain static tree: the picker page and its screenshots
-(from _build/previews/) plus site/<theme>/ for each demo. It is committed
-as the orphan `gh-pages` branch of tymsharp/skyblue-poolcare:
+(from _build/previews/) plus site/<theme>/ for each demo.
 
-    cd demo-host && git init -q -b gh-pages && git add -A \
+Hosting: Cloudflare Pages, project "skyblue-poolcare", connected to this
+repository's `demo-site` branch (no build command, output directory "/").
+The client link is https://skyblue-poolcare.pages.dev/ and the only one to
+send Skyblue.
+
+Refresh: push the demo branch. .github/workflows/demo-site.yml rebuilds
+demo-host/ and force-pushes it as the orphan `demo-site` branch, and
+Cloudflare redeploys from that branch on its own. To do the same by hand:
+
+    cd demo-host && git init -q -b demo-site && git add -A \
       && git commit -q -m "Demo previews" \
-      && git push -f https://github.com/tymsharp/skyblue-poolcare.git gh-pages
+      && git push -f https://github.com/tymsharp/skyblue-poolcare.git demo-site
 
-Hosting on Cloudflare Pages (no build step, the branch is the finished tree):
-
-  * Dashboard: Workers & Pages > Create > Pages > Connect to Git >
-    tymsharp/skyblue-poolcare, production branch gh-pages, no build
-    command, output directory "/". Redeploys itself on every push.
-  * CLI, from a checkout of the branch:
-        npx wrangler pages project create skyblue-pool-demos --production-branch gh-pages
-        npx wrangler pages deploy . --project-name skyblue-pool-demos
-  * Or let GitHub do it: .github/workflows/demos-cloudflare.yml builds
-    demo-host/ on every push and deploys it once the two Cloudflare
-    secrets exist on the repo (see the comment at the top of that file).
-
-GitHub Pages also serves the same branch at
-https://tymsharp.github.io/skyblue-poolcare/ until the branch is deleted.
-
-Every page gets a noindex tag, _headers adds X-Robots-Tag: noindex on
-Cloudflare, and robots.txt disallows crawling, so the previews never
-compete with the real site in search.
+Every page gets a noindex tag, _headers adds X-Robots-Tag: noindex, and
+robots.txt disallows crawling, so the previews never compete with the real
+site in search.
 """
 import shutil
 from pathlib import Path
@@ -73,7 +66,6 @@ def build():
                 n += p.suffix == ".html"
     (OUT / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
     (OUT / "_headers").write_text(HEADERS)
-    (OUT / ".nojekyll").write_text("")
     print(f"demo-host/: picker + {n} demo pages, all noindex")
 
 
