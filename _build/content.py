@@ -62,13 +62,6 @@ SERVICES = [
         "points": ["Pumps, motors and valves", "Filters, plumbing and leaks", "Clear quote before any work"],
     },
     {
-        "slug": "drain",
-        "name": "Drains & Acid Washes",
-        "short": "Drain and refill, or acid wash stained plaster.",
-        "body": "High calcium, stains or water that won't balance sometimes needs a fresh start. We drain, clean or acid wash, and refill with a proper start-up.",
-        "points": ["Full drain and refill", "Acid wash for stained plaster", "Start-up chemistry after refill"],
-    },
-    {
         "slug": "salt",
         "name": "Salt Cell Service",
         "short": "Salt cell cleaning, output checks and replacement when it quits.",
@@ -95,6 +88,13 @@ SERVICES = [
         "short": "Calcium line off the waterline tile, without harsh acid.",
         "body": "The white crust on your waterline tile is calcium from LA's hard water. We remove it with bead blasting or pumice, depending on the tile, so the tile line looks like it did when the pool was built.",
         "points": ["Calcium scale off the waterline", "Bead blasting or pumice, matched to the tile", "Spa and raised wall tile too"],
+    },
+    {
+        "slug": "drain",
+        "name": "Drains & Acid Washes",
+        "short": "Drain and refill, or acid wash stained plaster.",
+        "body": "High calcium, stains or water that won't balance sometimes needs a fresh start. We drain, clean or acid wash, and refill with a proper start-up.",
+        "points": ["Full drain and refill", "Acid wash for stained plaster", "Start-up chemistry after refill"],
     },
 ]
 
