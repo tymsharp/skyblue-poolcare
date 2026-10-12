@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SkyBlue Site Demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap">
+<style>
+/* Layout: one column of three wide theme rows, screenshot left, details right; stacks on phones. */
+:root{
+  --bg:#F3F8FB; --card:#FFFFFF; --ink:#0F2A3D; --muted:#4F6778; --line:#D6E6EF;
+  --brand:#0E7FB8; --aqua:#7CE6F3; --pill:#E3F4FA; --fill:#FFE98A;
+  --display:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1620;--card:#112230;--ink:#E4F0F6;--muted:#9AB3C3;--line:#21384A;--brand:#7CE6F3;--pill:#16303F;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A1620;--card:#112230;--ink:#E4F0F6;--muted:#9AB3C3;--line:#21384A;--brand:#7CE6F3;--pill:#16303F;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--body)}
+[hidden]{display:none!important}
+img{max-width:100%}
+main{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:40px 64px;display:grid;gap:28px}
+header{display:grid;gap:8px}
+.kicker{font:700 .75rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+h1{font:700 clamp(1.8rem,4.4vw,2.7rem)/1.1 var(--display);margin:0;text-wrap:balance}
+h2{font:700 1.6rem/1.15 var(--display);margin:0}
+.intro{color:var(--muted);max-width:64ch;margin:0}
+.fill{background:var(--fill);color:#3a3000;padding:0 .25em;border-radius:3px}
+.theme{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:20px;align-items:center}
+@media (min-width:820px){.theme{grid-template-columns:1.35fr 1fr;padding:20px}}
+.shots{position:relative;min-width:0;padding-right:44px;padding-bottom:20px}
+.shots .desk{width:100%;max-width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+.shots .phone{position:absolute;right:0;bottom:0;width:24%;max-width:130px;border-radius:14px;border:3px solid var(--ink);box-shadow:0 12px 30px -12px rgba(0,0,0,.45)}
+.info{display:grid;gap:12px;min-width:0}
+.info p{margin:0;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tags li{background:var(--pill);border-radius:99px;padding:.2em .7em;font-size:.85rem;font-weight:700}
+.links{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-block;background:var(--brand);color:var(--bg);font-weight:700;text-decoration:none;padding:.65em 1.1em;border-radius:999px}
+.btn:focus-visible,.sub:focus-visible{outline:3px solid var(--aqua);outline-offset:2px}
+.sub{color:var(--brand);font-weight:700}
+.view{display:grid;gap:10px;min-width:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:700 .85rem/1 var(--body);padding:.55em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.tabs button:focus-visible{outline:3px solid var(--aqua);outline-offset:2px}
+.cities summary{cursor:pointer;font-weight:700;color:var(--brand)}
+.cities ul{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:6px 14px;font-size:.92rem}
+.cities a{color:var(--ink)}
+.notes{border-top:1px solid var(--line);padding-top:20px;display:grid;gap:8px;color:var(--muted);font-size:.95rem}
+.notes ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
+</style>
+
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">SkyBlue Pool Care</p>
+    <h1>Three looks for the new website</h1>
+    <p class="intro">Each demo is the full site: home, weekly service, service areas, blog with 4 starter posts, contact and 15 city pages. Switch any preview to its city page or blog, or open any of the 15 city pages directly. The pages and words are the same in all three. Only the look changes. Click through any of them like a real site.</p>
+  </header>
+
+  <section class="theme" aria-labelledby="t-cal">
+    <div class="view">
+      <div class="tabs" role="group" aria-label="California preview">
+        <button type="button" id="california-b-home" aria-pressed="true" data-show="california-home">Home page</button>
+        <button type="button" id="california-b-city" aria-pressed="false" data-show="california-city">City page</button>
+        <button type="button" id="california-b-blog" aria-pressed="false" data-show="california-blog">Blog</button>
+      </div>
+      <div class="shots" id="california-home"><img class="desk" src="california.jpg" alt="California demo home page on a laptop" width="960" height="604"><img class="phone" src="california-m.jpg" alt="California demo home page on a phone" width="260" height="563"></div>
+      <div class="shots" id="california-blog" hidden><img class="desk" src="california-blog.jpg" alt="California demo blog page on a laptop" width="960" height="604"><img class="phone" src="california-blog-m.jpg" alt="California demo blog page on a phone" width="260" height="563"></div>
+      <div class="shots" id="california-city" hidden><img class="desk" src="california-city.jpg" alt="California demo Encino city page on a laptop" width="960" height="604"><img class="phone" src="california-city-m.jpg" alt="California demo Encino city page on a phone" width="260" height="563"></div>
+    </div>
+    <div class="info">
+      <h2 id="t-cal">California</h2>
+      <p>Sunset sky over pool water, palm trees and a sand background. Bold modern headlines with a yellow highlighter accent. Warm and friendly.</p>
+      <ul class="tags"><li>Sunset coral buttons</li><li>Palms and sun</li><li>Modern type</li></ul>
+      <div class="links"><a class="btn" href="site/california/index.html">Open the California site</a></div>
+      <details class="cities"><summary>All 15 city pages</summary><ul><li><a href="site/california/pool-service-calabasas.html">Calabasas &amp; West Hills</a></li><li><a href="site/california/pool-service-woodland-hills.html">Woodland Hills</a></li><li><a href="site/california/pool-service-encino.html">Encino &amp; Lake Balboa</a></li><li><a href="site/california/pool-service-tarzana.html">Tarzana</a></li><li><a href="site/california/pool-service-sherman-oaks.html">Sherman Oaks &amp; Van Nuys</a></li><li><a href="site/california/pool-service-studio-city.html">Studio City &amp; Toluca Lake</a></li><li><a href="site/california/pool-service-northridge.html">Northridge &amp; Chatsworth</a></li><li><a href="site/california/pool-service-porter-ranch-granada-hills.html">Porter Ranch &amp; Granada Hills</a></li><li><a href="site/california/pool-service-burbank.html">Burbank</a></li><li><a href="site/california/pool-service-hollywood-hills.html">Hollywood Hills &amp; Los Feliz</a></li><li><a href="site/california/pool-service-west-hollywood.html">West Hollywood</a></li><li><a href="site/california/pool-service-beverly-hills.html">Beverly Hills &amp; Bel Air</a></li><li><a href="site/california/pool-service-brentwood.html">Brentwood &amp; Pacific Palisades</a></li><li><a href="site/california/pool-service-santa-monica.html">Santa Monica &amp; Venice</a></li><li><a href="site/california/pool-service-culver-city.html">Culver City &amp; Mar Vista</a></li></ul></details>
+    </div>
+  </section>
+
+  <section class="theme" aria-labelledby="t-min">
+    <div class="view">
+      <div class="tabs" role="group" aria-label="Minimal preview">
+        <button type="button" id="minimal-b-home" aria-pressed="true" data-show="minimal-home">Home page</button>
+        <button type="button" id="minimal-b-city" aria-pressed="false" data-show="minimal-city">City page</button>
+        <button type="button" id="minimal-b-blog" aria-pressed="false" data-show="minimal-blog">Blog</button>
+      </div>
+      <div class="shots" id="minimal-home"><img class="desk" src="minimal.jpg" alt="Minimal demo home page on a laptop" width="960" height="604"><img class="phone" src="minimal-m.jpg" alt="Minimal demo home page on a phone" width="260" height="563"></div>
+      <div class="shots" id="minimal-blog" hidden><img class="desk" src="minimal-blog.jpg" alt="Minimal demo blog page on a laptop" width="960" height="604"><img class="phone" src="minimal-blog-m.jpg" alt="Minimal demo blog page on a phone" width="260" height="563"></div>
+      <div class="shots" id="minimal-city" hidden><img class="desk" src="minimal-city.jpg" alt="Minimal demo Encino city page on a laptop" width="960" height="604"><img class="phone" src="minimal-city-m.jpg" alt="Minimal demo Encino city page on a phone" width="260" height="563"></div>
+    </div>
+    <div class="info">
+      <h2 id="t-min">Minimal</h2>
+      <p>White space, thin lines and one blue. No gradients, shadows or decoration. Lets the words and the quote form do the work.</p>
+      <ul class="tags"><li>All white</li><li>One blue</li><li>Clean</li></ul>
+      <div class="links"><a class="btn" href="site/minimal/index.html">Open the Minimal site</a></div>
+      <details class="cities"><summary>All 15 city pages</summary><ul><li><a href="site/minimal/pool-service-calabasas.html">Calabasas &amp; West Hills</a></li><li><a href="site/minimal/pool-service-woodland-hills.html">Woodland Hills</a></li><li><a href="site/minimal/pool-service-encino.html">Encino &amp; Lake Balboa</a></li><li><a href="site/minimal/pool-service-tarzana.html">Tarzana</a></li><li><a href="site/minimal/pool-service-sherman-oaks.html">Sherman Oaks &amp; Van Nuys</a></li><li><a href="site/minimal/pool-service-studio-city.html">Studio City &amp; Toluca Lake</a></li><li><a href="site/minimal/pool-service-northridge.html">Northridge &amp; Chatsworth</a></li><li><a href="site/minimal/pool-service-porter-ranch-granada-hills.html">Porter Ranch &amp; Granada Hills</a></li><li><a href="site/minimal/pool-service-burbank.html">Burbank</a></li><li><a href="site/minimal/pool-service-hollywood-hills.html">Hollywood Hills &amp; Los Feliz</a></li><li><a href="site/minimal/pool-service-west-hollywood.html">West Hollywood</a></li><li><a href="site/minimal/pool-service-beverly-hills.html">Beverly Hills &amp; Bel Air</a></li><li><a href="site/minimal/pool-service-brentwood.html">Brentwood &amp; Pacific Palisades</a></li><li><a href="site/minimal/pool-service-santa-monica.html">Santa Monica &amp; Venice</a></li><li><a href="site/minimal/pool-service-culver-city.html">Culver City &amp; Mar Vista</a></li></ul></details>
+    </div>
+  </section>
+
+  <section class="theme" aria-labelledby="t-night">
+    <div class="view">
+      <div class="tabs" role="group" aria-label="Night Swim preview">
+        <button type="button" id="nightswim-b-home" aria-pressed="true" data-show="nightswim-home">Home page</button>
+        <button type="button" id="nightswim-b-city" aria-pressed="false" data-show="nightswim-city">City page</button>
+        <button type="button" id="nightswim-b-blog" aria-pressed="false" data-show="nightswim-blog">Blog</button>
+      </div>
+      <div class="shots" id="nightswim-home"><img class="desk" src="nightswim.jpg" alt="Night Swim demo home page on a laptop" width="960" height="604"><img class="phone" src="nightswim-m.jpg" alt="Night Swim demo home page on a phone" width="260" height="563"></div>
+      <div class="shots" id="nightswim-blog" hidden><img class="desk" src="nightswim-blog.jpg" alt="Night Swim demo blog page on a laptop" width="960" height="604"><img class="phone" src="nightswim-blog-m.jpg" alt="Night Swim demo blog page on a phone" width="260" height="563"></div>
+      <div class="shots" id="nightswim-city" hidden><img class="desk" src="nightswim-city.jpg" alt="Night Swim demo Encino city page on a laptop" width="960" height="604"><img class="phone" src="nightswim-city-m.jpg" alt="Night Swim demo Encino city page on a phone" width="260" height="563"></div>
+    </div>
+    <div class="info">
+      <h2 id="t-night">Night Swim</h2>
+      <p>Deep navy with glowing pool-light aqua and elegant serif headlines. Feels upscale, aimed at Beverly Hills, Bel Air and the Hills.</p>
+      <ul class="tags"><li>Dark</li><li>Glowing aqua</li><li>Premium</li></ul>
+      <div class="links"><a class="btn" href="site/nightswim/index.html">Open the Night Swim site</a></div>
+      <details class="cities"><summary>All 15 city pages</summary><ul><li><a href="site/nightswim/pool-service-calabasas.html">Calabasas &amp; West Hills</a></li><li><a href="site/nightswim/pool-service-woodland-hills.html">Woodland Hills</a></li><li><a href="site/nightswim/pool-service-encino.html">Encino &amp; Lake Balboa</a></li><li><a href="site/nightswim/pool-service-tarzana.html">Tarzana</a></li><li><a href="site/nightswim/pool-service-sherman-oaks.html">Sherman Oaks &amp; Van Nuys</a></li><li><a href="site/nightswim/pool-service-studio-city.html">Studio City &amp; Toluca Lake</a></li><li><a href="site/nightswim/pool-service-northridge.html">Northridge &amp; Chatsworth</a></li><li><a href="site/nightswim/pool-service-porter-ranch-granada-hills.html">Porter Ranch &amp; Granada Hills</a></li><li><a href="site/nightswim/pool-service-burbank.html">Burbank</a></li><li><a href="site/nightswim/pool-service-hollywood-hills.html">Hollywood Hills &amp; Los Feliz</a></li><li><a href="site/nightswim/pool-service-west-hollywood.html">West Hollywood</a></li><li><a href="site/nightswim/pool-service-beverly-hills.html">Beverly Hills &amp; Bel Air</a></li><li><a href="site/nightswim/pool-service-brentwood.html">Brentwood &amp; Pacific Palisades</a></li><li><a href="site/nightswim/pool-service-santa-monica.html">Santa Monica &amp; Venice</a></li><li><a href="site/nightswim/pool-service-culver-city.html">Culver City &amp; Mar Vista</a></li></ul></details>
+    </div>
+  </section>
+
+  <div class="notes">
+    <p><strong>Before launch</strong></p>
+    <ul>
+      <li><span class="fill">Yellow highlights</span> are placeholders for Zach: weekly price, Google rating, a review, license line and hours.</li>
+      <li>Colors are sampled from the SkyBlue logo: its blue, navy and palm green. The logo sits in the header and footer of every page.</li>
+      <li>Quote forms go to a thank-you page in these demos. They will post into GoHighLevel once it is wired.</li>
+    </ul>
+  </div>
+</main>
+<script>
+document.querySelectorAll(".tabs").forEach(function (g) {
+  g.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    g.querySelectorAll("button").forEach(function (x) {
+      var on = x === b;
+      x.setAttribute("aria-pressed", on);
+      document.getElementById(x.dataset.show).hidden = !on;
+    });
+  });
+});
+</script>
+
+</body>
+</html>
