@@ -1,17 +1,29 @@
-"""Build the client-facing demo preview for GitHub Pages.
+"""Build the client-facing demo preview tree (demo-host/).
 
     python3 _build/build.py --demos     # demos/<theme>/ first
     python3 _build/pages.py             # then demo-host/
 
-demo-host/ is pushed as the orphan gh-pages branch, served at
-https://tymsharp.github.io/skyblue-poolcare/ :
+demo-host/ is a plain static tree: the picker page and its screenshots
+(from _build/previews/) plus site/<theme>/ for each demo. It is committed
+as the orphan `gh-pages` branch of tymsharp/skyblue-poolcare:
 
     cd demo-host && git init -q -b gh-pages && git add -A \
       && git commit -q -m "Demo previews" \
       && git push -f https://github.com/tymsharp/skyblue-poolcare.git gh-pages
 
-The picker page and its screenshots live in _build/previews/. Every page
-gets a noindex tag and robots.txt disallows crawling, so the previews never
+Hosting on Cloudflare (the branch carries a wrangler.jsonc, so no build step):
+
+  * Workers, from any checkout of the branch:  npx wrangler deploy
+    -> https://skyblue-demo.<account>.workers.dev
+  * Or in the Cloudflare dashboard: Workers & Pages > Create > Pages >
+    Connect to Git > tymsharp/skyblue-poolcare, production branch gh-pages,
+    no build command, output directory "/".
+
+GitHub Pages also serves the same branch at
+https://tymsharp.github.io/skyblue-poolcare/ until the branch is deleted.
+
+Every page gets a noindex tag, _headers adds X-Robots-Tag: noindex on
+Cloudflare, and robots.txt disallows crawling, so the previews never
 compete with the real site in search.
 """
 import shutil
@@ -23,6 +35,24 @@ DEMOS = ROOT / "demos"
 OUT = ROOT / "demo-host"
 NOINDEX = '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">'
 SKIP = {"sitemap.xml", "robots.txt", "_headers", "index.html"}
+
+HEADERS = """/*
+  X-Robots-Tag: noindex, nofollow
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+"""
+
+WRANGLER = """{
+  // Cloudflare Worker serving this folder as static assets.
+  // Deploy from a checkout of the gh-pages branch:  npx wrangler deploy
+  "name": "skyblue-demo",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./", "html_handling": "auto-trailing-slash" }
+}
+"""
+
+ASSETSIGNORE = "wrangler.jsonc\n.assetsignore\n.git\n"
 
 
 def copy_page(src, dst):
@@ -49,6 +79,9 @@ def build():
                 copy_page(p, OUT / "site" / theme.name / p.relative_to(theme))
                 n += p.suffix == ".html"
     (OUT / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
+    (OUT / "_headers").write_text(HEADERS)
+    (OUT / "wrangler.jsonc").write_text(WRANGLER)
+    (OUT / ".assetsignore").write_text(ASSETSIGNORE)
     (OUT / ".nojekyll").write_text("")
     print(f"demo-host/: picker + {n} demo pages, all noindex")
 
