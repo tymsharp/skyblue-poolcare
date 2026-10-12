@@ -177,9 +177,9 @@ CITIES = [
         ],
     },
     {
-        "slug": "northridge", "name": "Northridge & Porter Ranch", "short": "Northridge", "region": "valley",
+        "slug": "northridge", "name": "Northridge & Granada Hills", "short": "Northridge", "region": "valley",
         "zips": ["91324", "91325", "91326", "91311", "91344", "91343", "91345", "91340", "91342", "91331"],
-        "hoods": ["Northridge", "Porter Ranch", "Granada Hills", "Chatsworth", "North Hills", "Mission Hills", "San Fernando", "Sylmar", "Pacoima", "Arleta"],
+        "hoods": ["Northridge", "Granada Hills", "Porter Ranch", "Chatsworth", "North Hills", "Mission Hills", "San Fernando", "Sylmar", "Pacoima", "Arleta"],
         "intro": "The north Valley is ranch-style homes and big flat lots, from Northridge and Granada Hills to the newer hillside tracts of Porter Ranch. Granada Hills has Balboa Highlands, one of the Valley's Eichler neighborhoods, with pools built into the original mid-century design.",
         "local": [
             ("Big lots, bigger pools", "North Valley lots are large and so are many pools. Bigger pools take more chemical, so we size every treatment to your pool's volume."),
